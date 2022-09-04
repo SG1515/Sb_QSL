@@ -1,9 +1,6 @@
 package com.ll.exam.qsl.user.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor //생성자가 만들어짐 (기본생성자 X)
 @NoArgsConstructor //인자없는 생성자 허용
+@Builder
 public class SiteUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
