@@ -3,6 +3,7 @@ package com.ll.exam.qsl.user.repository;
 import com.ll.exam.qsl.user.entity.SiteUser;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -58,5 +59,10 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
                 )
                 .orderBy(siteUser.id.desc())
                 .fetch();
+    }
+
+    @Override
+    public Page<SiteUser> searchQsl(String kw, Pageable pageable) {
+        return null;
     }
 }
