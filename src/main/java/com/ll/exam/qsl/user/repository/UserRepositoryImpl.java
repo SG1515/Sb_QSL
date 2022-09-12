@@ -13,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.support.PageableExecutionUtils;
 
 import java.util.List;
-import java.util.function.LongSupplier;
 
 import static com.ll.exam.qsl.user.entity.QSiteUser.siteUser;
 
@@ -88,8 +87,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         List<SiteUser> users = usersQuery.fetch();
 
-        LongSupplier totalSupplier = () -> 2;
+        // return new PageImpl<>(users, pageable, usersQuery.fetchCount()); // 아래와 거의 동일
 
-        return PageableExecutionUtils.getPage(users, pageable, totalSupplier);
+        return PageableExecutionUtils.getPage(users, pageable, usersQuery::fetchCount);
     }
 }
