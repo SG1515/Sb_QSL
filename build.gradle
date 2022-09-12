@@ -41,7 +41,6 @@ dependencies {
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
 
     implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
-
 }
 
 tasks.named('test') {
