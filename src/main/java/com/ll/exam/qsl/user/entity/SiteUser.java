@@ -10,8 +10,8 @@ import java.util.Set;
 @Entity
 @Setter
 @Getter
-@AllArgsConstructor //생성자가 만들어짐 (기본생성자 X)
-@NoArgsConstructor //인자없는 생성자 허용
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class SiteUser {
     @Id

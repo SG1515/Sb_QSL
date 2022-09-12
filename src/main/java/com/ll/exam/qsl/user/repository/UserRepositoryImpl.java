@@ -18,17 +18,17 @@ import static com.ll.exam.qsl.user.entity.QSiteUser.siteUser;
 
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepositoryCustom {
-
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public SiteUser getQslUser(Long id){
+    public SiteUser getQslUser(Long id) {
         return jpaQueryFactory
                 .select(siteUser)
                 .from(siteUser)
                 .where(siteUser.id.eq(id))
                 .fetchOne();
     }
+
     @Override
     public long getQslCount() {
         return jpaQueryFactory
@@ -100,6 +100,18 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
     @Override
     public List<SiteUser> getQslUsersByInterestKeyword(String keywordContent) {
-        return null;
+        /*
+       SELECT SU.*
+       FROM site_user AS SU
+       INNER JOIN site_user_interest_keywords AS SUIK
+       ON SU.id = SUIK.site_user_id
+       INNER JOIN interest_keyword AS IK
+       ON IK.content = SUIK.interest_keywords_content
+       WHERE IK.content = "축구";
+       */
+        return jpaQueryFactory
+                .selectFrom(siteUser)
+                .innerJoin(siteUser.interestKeywords)
+                .fetch();
     }
 }

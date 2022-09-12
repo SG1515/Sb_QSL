@@ -43,8 +43,6 @@ class UserRepositoryTests {
                 .email("user4@test.com")
                 .build();
 
-        // SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
-
         userRepository.saveAll(Arrays.asList(u3, u4));
     }
 
@@ -69,6 +67,7 @@ class UserRepositoryTests {
         assertThat(u2.getEmail()).isEqualTo("user2@test.com");
         assertThat(u2.getPassword()).isEqualTo("{noop}1234");
     }
+
     @Test
     @DisplayName("모든 회원 수")
     void t4() {
@@ -142,7 +141,7 @@ class UserRepositoryTests {
     void t8() {
         long totalCount = userRepository.count();
         int pageSize = 1; // 한 페이지에 보여줄 아이템 개수
-        int totalPages = (int)Math.ceil(totalCount / (double)pageSize);
+        int totalPages = (int) Math.ceil(totalCount / (double) pageSize);
         int page = 1;
         String kw = "user";
 
@@ -188,6 +187,7 @@ class UserRepositoryTests {
         List<SiteUser> users = usersPage.get().toList();
 
         assertThat(users.size()).isEqualTo(pageSize);
+
         SiteUser u = users.get(0);
 
         assertThat(u.getId()).isEqualTo(1L);

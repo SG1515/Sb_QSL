@@ -19,5 +19,6 @@ public interface UserRepositoryCustom {
 
     Page<SiteUser> searchQsl(String kw, Pageable pageable);
 
-    List<SiteUser> getQslUsersByInterestKeyword(String 축구);
+    List<SiteUser> getQslUsersByInterestKeyword(String keywordContent);
 }
+

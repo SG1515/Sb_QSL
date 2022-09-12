@@ -14,6 +14,6 @@ public class UserController {
 
     @RequestMapping("/user/{id}")
     public SiteUser user(@PathVariable Long id) {
-        return  userRepository.getQslUser(id);
+        return userRepository.getQslUser(id);
     }
 }
